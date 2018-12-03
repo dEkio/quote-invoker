@@ -20,11 +20,7 @@ pipeline {
         }
         stage('Check Pact Verifications') {
             steps {
-                bat'wget https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v1.63.0/pact-1.63.0-win32.zip'
-                bat '7z x pact-1.63.0-win32.zip'
-                dir('pact/bin') {
-                    bat "./pact-broker can-i-deploy --retry-while-unknown=12 --retry-interval=10 -a quote-invoker -b http://localhost -e ${GIT_COMMIT}"
-                }
+                bat "pact-broker can-i-deploy --retry-while-unknown=12 --retry-interval=10 -a quote-invoker -b http://localhost -e ${GIT_COMMIT}"
             }
         }
         stage('Deploy') {
