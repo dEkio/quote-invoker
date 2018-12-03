@@ -10,16 +10,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                dir('messaging-app') {
-                    sh '.mvn clean verify'
-                }
+                    sh 'mvn clean verify'
             }
         }
         stage('Publish Pacts') {
             steps {
-                dir('messaging-app') {
                     sh 'mvn pact:publish -Dpact.consumer.version=${GIT_COMMIT} -Dpact.tag=${BRANCH_NAME}'
-                }
             }
         }
         stage('Check Pact Verifications') {
