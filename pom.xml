@@ -78,7 +78,7 @@
 				<configuration>
 					<!-- pact_broker is the service name in docker-compose -->
 					<pactBrokerUrl>http://localhost</pactBrokerUrl>
-					<projectVersion></projectVersion>
+					<projectVersion>${pact.consumer.version}</projectVersion>
 					<tags>
 						<tag>feature1</tag>
 					</tags>
