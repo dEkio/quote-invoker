@@ -20,7 +20,9 @@ pipeline {
         }
         stage('Check Pact Verifications') {
             steps {
-                bat "pact-broker.bat can-i-deploy --retry-while-unknown=12 --retry-interval=10 -a quote-invoker -b http://localhost -e ${GIT_COMMIT}"
+                dir('pact/bin') {
+                    bat ".\\pact-broker can-i-deploy --retry-while-unknown=12 --retry-interval=10 -a quote-invoker -b http://localhost -e ${GIT_COMMIT}"
+                }
             }
         }
         stage('Deploy') {
