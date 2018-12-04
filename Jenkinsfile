@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Publish Pacts') {
             steps {
-                    bat 'mvn pact:publish -Dpact.consumer.version=${params.pactVersion} -Dpact.tag=${params.pactConsumerTags}'
+                    bat 'mvn pact:publish -Dpact.consumer.version=%pactVersion% -Dpact.consumer.tag=%pactConsumerTags%'
             }
         }
         stage('Check Pact Verifications') {
