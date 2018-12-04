@@ -3,6 +3,11 @@ pipeline {
 
     agent any
 
+    parameters {
+        string(name: 'pactConsumerTags', defaultValue: 'master')
+        string(name: 'pactVersion', defaultValue: '1')
+    }
+
     environment {
         BRANCH_NAME=env.GIT_BRANCH.replace("origin/", "")
     }
@@ -15,7 +20,7 @@ pipeline {
         }
         stage('Publish Pacts') {
             steps {
-                    bat 'mvn pact:publish -Dpact.consumer.version=${GIT_COMMIT} -Dpact.tag=${BRANCH_NAME}'
+                    bat 'mvn pact:publish -Dpact.consumer.version=${params.pactVersion} -Dpact.tag=${params.pactConsumerTags}'
             }
         }
         stage('Check Pact Verifications') {

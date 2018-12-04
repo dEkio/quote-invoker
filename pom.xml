@@ -80,7 +80,7 @@
 					<pactBrokerUrl>http://localhost</pactBrokerUrl>
 					<projectVersion>${pact.consumer.version}</projectVersion>
 					<tags>
-						<tag>feature1</tag>
+						<tag></tag>
 					</tags>
 					<trimSnapshot>true</trimSnapshot>
 				</configuration>
